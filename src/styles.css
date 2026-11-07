@@ -1,0 +1,207 @@
+/* Basic styles for the login and signup page */
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #222;
+    background-color: #f4f5f8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button,
+input {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    color: white;
+    background-color: #5965df;
+    border-radius: 10px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+h1 {
+    margin: 22px 0 6px;
+    font-size: 28px;
+}
+
+.subtitle {
+    margin: 0 0 25px;
+    color: #777;
+    font-size: 14px;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 22px;
+    padding: 5px;
+    background-color: #f0f1f5;
+    border-radius: 8px;
+}
+
+.tab {
+    padding: 11px;
+    color: #666;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab.active {
+    color: #4e56c9;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    color: #222;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5965df;
+    box-shadow: 0 0 0 2px rgba(89, 101, 223, 0.15);
+}
+
+.submit {
+    margin-top: 3px;
+    padding: 14px 16px;
+    color: white;
+    background-color: #5965df;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover:not(:disabled) {
+    background-color: #4854c7;
+}
+
+.submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.notice {
+    margin: -5px 0 18px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.notice.success {
+    color: #176342;
+    background-color: #eaf8f0;
+    border: 1px solid #c8ecd8;
+}
+
+.notice.error {
+    color: #9e3038;
+    background-color: #fff0f0;
+    border: 1px solid #f5d0d2;
+}
+
+.footnote {
+    margin: 23px 0 0;
+    color: #777;
+    font-size: 13px;
+    text-align: center;
+}
+
+.text-button {
+    padding: 0;
+    color: #505acb;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.page-footer {
+    margin: 20px 0 0;
+    color: #888;
+    font-size: 12px;
+}
+
+.project-card {
+  background-color: #e5e7eb; 
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 28px 22px;
+    }
+
+    .name-row {
+        grid-template-columns: 1fr;
+    }
+}
