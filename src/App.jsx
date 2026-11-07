@@ -172,7 +172,9 @@ export default function App() {
     }
   }
 
-  // ----- User stories -----
+  // #############################################################
+  // User stories
+  // #############################################################
 
   async function loadStoryData(projectId) {
     if (!projectId) {
@@ -460,6 +462,9 @@ export default function App() {
     ["stories", "User Stories"],
   ];
 
+  // Render the appropriate page based on the current state
+  // Each page has its own form and functionality, with conditional rendering based on the `page` state.
+  // The notice area displays success or error messages based on user actions.
   return (
     <main className="page">
       <section className="auth-card">
@@ -686,7 +691,7 @@ export default function App() {
                   <label>
                     Title
                     <input name="title" value={storyForm.title} onChange={updateStoryForm}
-                      placeholder="View campus event details" maxLength={100} />
+                      placeholder="Story Title" maxLength={100} />
                   </label>
                   <label>
                     Description
