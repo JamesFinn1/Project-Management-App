@@ -1,3 +1,6 @@
+// Author: James Finn III
+// main server file for the backend of the project management app
+
 require("dotenv").config();
 
 const express = require("express");
@@ -22,7 +25,9 @@ const STORY_DESCRIPTION_LIMIT = 1000;
 app.use(cors());
 app.use(express.json());
 
+//**************************************************************
 // Helper Functions
+//**************************************************************
 
 // Returns an ObjectId if `value` is a valid 24-char hex id, otherwise null.
 function parseObjectId(value) {
@@ -108,7 +113,7 @@ async function resolveAssignee(db, projectOid, raw) {
 }
 
 // Sign-up:
-//  validate input, check username, hash password, then insert.
+// validate input, check username, hash password, then insert.
 app.post("/api/signup", async (req, res) => {
   try {
     const { firstName, lastName, username, password } = req.body || {};
@@ -291,7 +296,7 @@ app.post("/api/projects", async (req, res) => {
   }
 });
 
-// Get users from database
+// Get users table from database
 app.get("/api/users", async (req, res) => {
   try {
     const usersCollection = getDb().collection("users");
@@ -350,7 +355,10 @@ app.get("/api/projects", async (req, res) => {
   }
 });
 
-// ---------- Project memberships ----------
+//**************************************************************
+// Project memberships
+// A project has a lead (project_lead_id) and may have other members.
+//**************************************************************
 
 // List members of a project (lead is flagged with is_lead).
 app.get("/api/projects/:projectId/members", async (req, res) => {
@@ -476,7 +484,7 @@ app.delete("/api/projects/:projectId/members/:userId", async (req, res) => {
       });
     }
 
-    // A member who still owns stories in THIS project (any status) cannot be removed.
+    // A member who still owns stories in this project (any status) cannot be removed.
     const assignedCount = await db.collection(USER_STORIES).countDocuments({
       project_id: projectOid,
       assigned_user_id: userOid
@@ -506,7 +514,10 @@ app.delete("/api/projects/:projectId/members/:userId", async (req, res) => {
   }
 });
 
-// User stories
+//**************************************************************
+// User Stories
+// A story is always associated with a project, and may be assigned to a member of that project.
+//**************************************************************
 
 // Get the backlog for a project (all statuses), with the assigned member's name.
 app.get("/api/projects/:projectId/stories", async (req, res) => {
